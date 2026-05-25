@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2550" height="3300" viewBox="0 0 2550 3300">
+  <rect width="2550" height="3300" fill="#f7f5ef"/>
+  <rect x="120" y="120" width="2310" height="3060" rx="28" fill="#ffffff" stroke="#2f3a3f" stroke-width="6"/>
+
+  <text x="180" y="270" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700" fill="#1f2a2e">Simple Symptom Tracker</text>
+  <text x="180" y="350" font-family="Arial, Helvetica, sans-serif" font-size="42" fill="#506069">Offline iPhone-friendly tracker for Spontaneous Chronic Hives / Urticaria</text>
+  <line x1="180" y1="420" x2="2370" y2="420" stroke="#d5d0c4" stroke-width="5"/>
+
+  <text x="180" y="535" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#1f2a2e">Project Intent</text>
+  <text x="180" y="600" font-family="Arial, Helvetica, sans-serif" font-size="37" fill="#273238">Record symptoms with as few steps as possible while quietly preserving context for later review, CSV analysis,</text>
+  <text x="180" y="652" font-family="Arial, Helvetica, sans-serif" font-size="37" fill="#273238">and A/B comparison. The user should not need to remember details during brain fog or medication side effects.</text>
+
+  <rect x="180" y="735" width="660" height="680" rx="18" fill="#eef5f4" stroke="#aac8c5" stroke-width="4"/>
+  <text x="220" y="815" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#173b3a">1. First Launch Setup</text>
+  <text x="220" y="895" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• User name</text>
+  <text x="220" y="950" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Recording start date</text>
+  <text x="220" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Optional medication list:</text>
+  <text x="250" y="1055" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#425158">name, dose, frequency, start date, status</text>
+  <text x="220" y="1110" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Physical condition checklist + notes</text>
+  <text x="220" y="1165" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Mental condition free text</text>
+  <text x="220" y="1220" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Grouped stress/context checklist</text>
+  <text x="220" y="1275" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Optional A/B test setup</text>
+  <text x="220" y="1360" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#173b3a">Button: Begin Recording</text>
+
+  <rect x="945" y="735" width="660" height="680" rx="18" fill="#f4f1fb" stroke="#b9afd7" stroke-width="4"/>
+  <text x="985" y="815" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#30264a">2. Main Recording Page</text>
+  <text x="985" y="895" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Top choice: Type or Speech</text>
+  <text x="985" y="950" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Large main symptom text box</text>
+  <text x="985" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Speech-to-text when supported</text>
+  <text x="985" y="1060" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Manual typing fallback always available</text>
+  <text x="985" y="1115" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Auto-save with visible save time</text>
+  <text x="985" y="1170" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Save Entry button overwrites current entry</text>
+  <text x="985" y="1225" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Smaller condition-change note box</text>
+  <text x="985" y="1280" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• No symptom scales or suggestive prompts</text>
+  <text x="985" y="1360" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#30264a">Goal: Fast perception-based logging</text>
+
+  <rect x="1710" y="735" width="660" height="680" rx="18" fill="#fff3e8" stroke="#e3b276" stroke-width="4"/>
+  <text x="1750" y="815" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#5a3512">3. Conditions Page</text>
+  <text x="1750" y="895" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Update ongoing baseline/profile</text>
+  <text x="1750" y="950" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• User is notified changes affect future logs</text>
+  <text x="1750" y="1005" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Medication status:</text>
+  <text x="1780" y="1055" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#425158">active, paused, stopped</text>
+  <text x="1750" y="1110" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Physical condition checklist + notes</text>
+  <text x="1750" y="1165" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Mental condition free text</text>
+  <text x="1750" y="1220" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Stress/context grouped categories</text>
+  <text x="1750" y="1275" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Saves condition changes without symptoms</text>
+  <text x="1750" y="1360" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#5a3512">Keeps history for CSV context</text>
+
+  <rect x="180" y="1495" width="1065" height="610" rx="18" fill="#f6faf0" stroke="#b7ca95" stroke-width="4"/>
+  <text x="220" y="1575" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#314412">Data, Privacy, and Export</text>
+  <text x="220" y="1655" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Daily records with multiple timestamped entries</text>
+  <text x="220" y="1710" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Each entry stores date, local time, and timezone</text>
+  <text x="220" y="1765" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• CSV-oriented data for later analysis and A/B review</text>
+  <text x="220" y="1820" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Current profile details are snapshotted in the background</text>
+  <text x="220" y="1875" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Condition-change history is preserved</text>
+  <text x="220" y="1930" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Local-only storage by default; no login or cloud account</text>
+  <text x="220" y="1985" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Settings include CSV export and reset recorded data options</text>
+
+  <rect x="1305" y="1495" width="1065" height="610" rx="18" fill="#eef2fa" stroke="#9dafcf" stroke-width="4"/>
+  <text x="1345" y="1575" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#20345a">Settings and Appearance</text>
+  <text x="1345" y="1655" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Gear icon opens settings</text>
+  <text x="1345" y="1710" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Button to return to recording page</text>
+  <text x="1345" y="1765" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Light/Dark toggle, including OS-based defaults</text>
+  <text x="1345" y="1820" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Custom color controls for addressable CSS settings</text>
+  <text x="1345" y="1875" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Save custom profiles with user-entered names</text>
+  <text x="1345" y="1930" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Dropdown lists saved custom profiles only</text>
+  <text x="1345" y="1985" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Splash screen uses fixed background color + user logo</text>
+
+  <rect x="180" y="2185" width="1065" height="485" rx="18" fill="#fbf0f1" stroke="#d9a4aa" stroke-width="4"/>
+  <text x="220" y="2265" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#63313a">A/B Test Support</text>
+  <text x="220" y="2345" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Optional during first-launch setup</text>
+  <text x="220" y="2400" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Phase labels can be customized</text>
+  <text x="220" y="2455" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Timed phase duration or manual A/B switching</text>
+  <text x="220" y="2510" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Recording page can show active phase + days remaining</text>
+  <text x="220" y="2565" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Entry rows include active phase for CSV analysis</text>
+
+  <rect x="1305" y="2185" width="1065" height="485" rx="18" fill="#f0f7fb" stroke="#9bc3d9" stroke-width="4"/>
+  <text x="1345" y="2265" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#173f55">iPhone / Safari Reality Check</text>
+  <text x="1345" y="2345" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Installable from Safari using Add to Home Screen</text>
+  <text x="1345" y="2400" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• App shell can run offline after first successful load</text>
+  <text x="1345" y="2455" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Speech-to-text is offered only when supported</text>
+  <text x="1345" y="2510" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• Manual text entry is the dependable fallback</text>
+  <text x="1345" y="2565" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">• True iOS widgets require a native App Store app later</text>
+
+  <rect x="180" y="2750" width="2190" height="280" rx="18" fill="#fffdf8" stroke="#d5d0c4" stroke-width="4"/>
+  <text x="220" y="2830" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#1f2a2e">Feedback Checklist</text>
+  <text x="220" y="2910" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">□ Is anything missing from first setup?  □ Is the recording flow simple enough during brain fog?</text>
+  <text x="220" y="2965" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#1f2a2e">□ Are condition updates easy to understand?  □ Any privacy/export concerns?  □ Any visual accessibility needs?</text>
+
+  <text x="180" y="3130" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#637078">Planning artifact for discussion before build. Not medical advice; intended as a personal tracking tool.</text>
+</svg>

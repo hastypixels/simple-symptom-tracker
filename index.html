@@ -1,0 +1,288 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#005FBA" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Symptom Tracker" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Simple Symptom Tracker</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="splash" class="splash" aria-label="Simple Symptom Tracker loading">
+      <img src="assets/splash-logo.svg" alt="Simple Symptom Tracker" />
+    </div>
+
+    <div id="app" class="app is-hidden">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <img src="assets/splash-logo.svg" alt="" aria-hidden="true" />
+          <div>
+            <p class="eyebrow" id="page-kicker">Setup</p>
+            <h1 id="page-title">Simple Symptom Tracker</h1>
+          </div>
+        </div>
+        <button class="icon-button" id="settings-button" type="button" aria-label="Settings" title="Settings">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.5-2.4 1a7 7 0 0 0-2-1.2L14.2 3h-4.4l-.3 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.5 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.5 2.4-1a7 7 0 0 0 2 1.2l.3 2.6h4.4l.3-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.5-2-1.5c.1-.4.1-.8.1-1.2Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </button>
+      </header>
+
+      <main>
+        <section class="page" id="setup-page" aria-labelledby="setup-heading">
+          <div class="section-heading heading-with-action">
+            <div>
+              <h2 id="setup-heading">First Launch Setup</h2>
+              <p>Set the baseline context that future symptom records can reference.</p>
+            </div>
+            <button class="help-button" id="setup-help" type="button" aria-label="Setup help">?</button>
+          </div>
+
+          <form id="setup-form" class="stack">
+            <label>
+              <span>User name</span>
+              <input id="setup-name" autocomplete="name" />
+            </label>
+
+            <label>
+              <span>Recording begins</span>
+              <input id="setup-start-date" type="date" />
+            </label>
+
+            <fieldset>
+              <legend>Medication regimen</legend>
+              <div id="setup-medications" class="repeat-list"></div>
+              <button class="secondary" id="add-setup-medication" type="button">Add Medication</button>
+            </fieldset>
+
+            <fieldset>
+              <legend>Physical condition</legend>
+              <div id="setup-physical-checklist" class="check-grid"></div>
+              <label>
+                <span>Physical condition details</span>
+                <textarea id="setup-physical-notes" rows="4"></textarea>
+              </label>
+            </fieldset>
+
+            <label>
+              <span>Mental condition</span>
+              <textarea id="setup-mental-notes" rows="4"></textarea>
+            </label>
+
+            <fieldset>
+              <legend>Stress and context factors</legend>
+              <div id="setup-stress-checklist" class="grouped-checks"></div>
+            </fieldset>
+
+            <fieldset>
+              <legend>A/B test settings</legend>
+              <label class="toggle-row">
+                <input id="setup-ab-enabled" type="checkbox" />
+                <span>Enable A/B tracking</span>
+              </label>
+              <div id="setup-ab-options" class="ab-options is-muted">
+                <div class="field-row">
+                  <label>
+                    <span>Phase A label</span>
+                    <input id="setup-ab-label-a" placeholder="A" />
+                  </label>
+                  <label>
+                    <span>Phase B label</span>
+                    <input id="setup-ab-label-b" placeholder="B" />
+                  </label>
+                </div>
+                <label>
+                  <span>Phase mode</span>
+                  <select id="setup-ab-mode">
+                    <option value="manual">Manual switching</option>
+                    <option value="timed">Timed phases</option>
+                  </select>
+                </label>
+                <div class="field-row">
+                  <label>
+                    <span>Start phase</span>
+                    <select id="setup-ab-current">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Days per phase</span>
+                    <input id="setup-ab-days" type="number" min="1" step="1" value="7" />
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <button class="primary bottom-action" type="submit">Begin Recording</button>
+          </form>
+        </section>
+
+        <section class="page is-hidden" id="record-page" aria-labelledby="record-heading">
+          <div class="record-head heading-with-action">
+            <div>
+              <h2 id="record-heading">Record Symptoms</h2>
+              <p id="today-summary"></p>
+            </div>
+            <div class="button-row compact-actions">
+              <button class="help-button" id="record-help" type="button" aria-label="Recording help">?</button>
+              <button class="secondary" id="conditions-link" type="button">Conditions</button>
+            </div>
+          </div>
+
+          <div id="ab-counter" class="phase-pill is-hidden"></div>
+
+          <div class="segmented" role="group" aria-label="Input method">
+            <button id="type-mode" class="is-selected" type="button">Type</button>
+            <button id="speech-mode" type="button">Speech</button>
+          </div>
+
+          <div id="speech-panel" class="speech-panel is-hidden">
+            <button class="primary" id="speech-toggle" type="button">Start Listening</button>
+            <p id="speech-status">Speech recognition will be used if this device supports it.</p>
+          </div>
+
+          <label>
+            <span>Symptom entry</span>
+            <textarea id="entry-text" class="large-entry" rows="10" placeholder="Record what you notice, in your own words."></textarea>
+          </label>
+
+          <div class="save-row">
+            <button class="primary" id="save-entry" type="button">Save Entry</button>
+            <button class="secondary" id="new-entry" type="button">New Entry</button>
+            <span id="save-status">Not saved yet</span>
+          </div>
+
+          <label>
+            <span>Condition changes</span>
+            <textarea id="entry-condition-change" rows="4" placeholder="Optional"></textarea>
+          </label>
+          <p class="helper">Anything entered here will be recorded alongside this symptom entry and added to condition history.</p>
+        </section>
+
+        <section class="page is-hidden" id="conditions-page" aria-labelledby="conditions-heading">
+          <div class="section-heading">
+            <h2 id="conditions-heading">Update Conditions</h2>
+            <p>Changes saved here become the ongoing baseline for future entries.</p>
+          </div>
+
+          <form id="conditions-form" class="stack">
+            <fieldset>
+              <legend>Medication regimen</legend>
+              <div id="conditions-medications" class="repeat-list"></div>
+              <button class="secondary" id="add-conditions-medication" type="button">Add Medication</button>
+            </fieldset>
+
+            <fieldset>
+              <legend>Physical condition</legend>
+              <div id="conditions-physical-checklist" class="check-grid"></div>
+              <label>
+                <span>Physical condition details</span>
+                <textarea id="conditions-physical-notes" rows="4"></textarea>
+              </label>
+            </fieldset>
+
+            <label>
+              <span>Mental condition</span>
+              <textarea id="conditions-mental-notes" rows="4"></textarea>
+            </label>
+
+            <fieldset>
+              <legend>Stress and context factors</legend>
+              <div id="conditions-stress-checklist" class="grouped-checks"></div>
+            </fieldset>
+
+            <div class="button-row">
+              <button class="secondary" id="conditions-cancel" type="button">Return</button>
+              <button class="primary" type="submit">Save Conditions</button>
+            </div>
+            <p id="conditions-status" class="helper"></p>
+          </form>
+        </section>
+
+        <section class="page is-hidden" id="settings-page" aria-labelledby="settings-heading">
+          <div class="section-heading">
+            <h2 id="settings-heading">Settings</h2>
+            <p>Control appearance, export records, or reset local data.</p>
+          </div>
+
+          <div class="stack">
+            <button class="secondary" id="about-button" type="button">About SST</button>
+            <label class="toggle-row">
+              <input id="theme-dark-toggle" type="checkbox" />
+              <span>Dark mode</span>
+            </label>
+
+            <fieldset>
+              <legend>Custom color profile</legend>
+              <div class="field-row colors">
+                <label><span>Background</span><input data-color-var="--bg" type="color" /></label>
+                <label><span>Surface</span><input data-color-var="--surface" type="color" /></label>
+                <label><span>Text</span><input data-color-var="--text" type="color" /></label>
+                <label><span>Primary</span><input data-color-var="--primary" type="color" /></label>
+                <label><span>Accent</span><input data-color-var="--accent" type="color" /></label>
+                <label><span>Border</span><input data-color-var="--border" type="color" /></label>
+              </div>
+              <div class="field-row">
+                <label>
+                  <span>Profile name</span>
+                  <input id="profile-name" />
+                </label>
+                <label>
+                  <span>Saved profiles</span>
+                  <select id="profile-select">
+                    <option value="">Choose saved profile</option>
+                  </select>
+                </label>
+              </div>
+              <div class="button-row">
+                <button class="secondary" id="save-profile" type="button">Save Profile</button>
+                <button class="secondary" id="delete-profile" type="button">Delete Profile</button>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>A/B phase</legend>
+              <div id="settings-ab-panel"></div>
+              <p id="settings-ab-status" class="helper"></p>
+            </fieldset>
+
+            <fieldset>
+              <legend>Data</legend>
+              <div class="button-row">
+                <button class="secondary" id="export-csv" type="button">Export CSV</button>
+                <button class="danger" id="reset-records" type="button">Reset Records</button>
+                <button class="danger" id="reset-all" type="button">Reset Everything</button>
+              </div>
+              <p class="helper">All data is stored locally on this device unless you export it.</p>
+            </fieldset>
+
+            <button class="primary bottom-action" id="return-recording" type="button">Return to Recording</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-backdrop is-hidden" id="modal-backdrop" role="presentation">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-head">
+          <h2 id="modal-title"></h2>
+          <button class="icon-button" id="modal-close" type="button" aria-label="Close">X</button>
+        </div>
+        <div id="modal-body" class="modal-body"></div>
+      </section>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
+
+
+
+
+
+
