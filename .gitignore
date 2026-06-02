@@ -1,6 +1,7 @@
-﻿publish/
+publish/
 *.csv
 *.tsv
 *.xlsx
 .DS_Store
 Thumbs.db
+planning/mockups/

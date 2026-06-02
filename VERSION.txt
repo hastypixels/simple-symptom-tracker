@@ -1,4 +1,4 @@
 Simple Symptom Tracker
-Version: 0.3.0
-Build: 20260525.003
-Build date: 2026-05-25 14:24 -07:00
+Version: 0.4.0
+Build: 20260602.004
+Build date: 2026-06-02 05:21 -07:00

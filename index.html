@@ -1,11 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#005FBA" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Symptom Tracker" />
+    <meta name="apple-mobile-web-app-title" content="SST" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Simple Symptom Tracker</title>
     <link rel="manifest" href="manifest.webmanifest" />
@@ -14,275 +14,126 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div id="splash" class="splash" aria-label="Simple Symptom Tracker loading">
+    <section id="splash" class="splash" aria-label="Simple Symptom Tracker loading">
       <img src="assets/splash-logo.svg" alt="Simple Symptom Tracker" />
-    </div>
+    </section>
 
     <div id="app" class="app is-hidden">
-      <header class="topbar">
-        <div class="brand-lockup">
-          <img src="assets/splash-logo.svg" alt="" aria-hidden="true" />
-          <div>
-            <p class="eyebrow" id="page-kicker">Setup</p>
-            <h1 id="page-title">Simple Symptom Tracker</h1>
-          </div>
-        </div>
-        <button class="icon-button" id="settings-button" type="button" aria-label="Settings" title="Settings">
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.5-2.4 1a7 7 0 0 0-2-1.2L14.2 3h-4.4l-.3 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.5 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.5 2.4-1a7 7 0 0 0 2 1.2l.3 2.6h4.4l.3-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.5-2-1.5c.1-.4.1-.8.1-1.2Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-        </button>
-      </header>
-
       <main>
-        <section class="page" id="setup-page" aria-labelledby="setup-heading">
-          <div class="section-heading heading-with-action">
-            <div>
-              <h2 id="setup-heading">First Launch Setup</h2>
-              <p>Set the baseline context that future symptom records can reference.</p>
-            </div>
-            <button class="help-button" id="setup-help" type="button" aria-label="Setup help">?</button>
+        <section class="page flow-page" id="setup-choice-page">
+          <div class="theme-row">
+            <span>Light/Dark</span>
+            <label class="switch" aria-label="Dark mode">
+              <input id="setup-theme-toggle" type="checkbox" />
+              <span></span>
+            </label>
           </div>
-
-          <form id="setup-form" class="stack">
-            <label>
-              <span>User name</span>
-              <input id="setup-name" autocomplete="name" />
-            </label>
-
-            <label>
-              <span>Recording begins</span>
-              <input id="setup-start-date" type="date" />
-            </label>
-
-            <fieldset>
-              <legend>Medication regimen</legend>
-              <div id="setup-medications" class="repeat-list"></div>
-              <button class="secondary" id="add-setup-medication" type="button">Add Medication</button>
-            </fieldset>
-
-            <fieldset>
-              <legend>Physical condition</legend>
-              <div id="setup-physical-checklist" class="check-grid"></div>
-              <label>
-                <span>Physical condition details</span>
-                <textarea id="setup-physical-notes" rows="4"></textarea>
-              </label>
-            </fieldset>
-
-            <label>
-              <span>Mental condition</span>
-              <textarea id="setup-mental-notes" rows="4"></textarea>
-            </label>
-
-            <fieldset>
-              <legend>Stress and context factors</legend>
-              <div id="setup-stress-checklist" class="grouped-checks"></div>
-            </fieldset>
-
-            <fieldset>
-              <legend>A/B test settings</legend>
-              <label class="toggle-row">
-                <input id="setup-ab-enabled" type="checkbox" />
-                <span>Enable A/B tracking</span>
-              </label>
-              <div id="setup-ab-options" class="ab-options is-muted">
-                <div class="field-row">
-                  <label>
-                    <span>Phase A label</span>
-                    <input id="setup-ab-label-a" placeholder="A" />
-                  </label>
-                  <label>
-                    <span>Phase B label</span>
-                    <input id="setup-ab-label-b" placeholder="B" />
-                  </label>
-                </div>
-                <label>
-                  <span>Phase mode</span>
-                  <select id="setup-ab-mode">
-                    <option value="manual">Manual switching</option>
-                    <option value="timed">Timed phases</option>
-                  </select>
-                </label>
-                <div class="field-row">
-                  <label>
-                    <span>Start phase</span>
-                    <select id="setup-ab-current">
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                    </select>
-                  </label>
-                  <label>
-                    <span>Days per phase</span>
-                    <input id="setup-ab-days" type="number" min="1" step="1" value="7" />
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-
-            <button class="primary bottom-action" type="submit">Begin Recording</button>
-          </form>
+          <div class="soft-section center-section">
+            <p class="big-question">Would you like to do first time setup?</p>
+            <div class="choice-row">
+              <button class="primary" id="setup-yes" type="button">Yes</button>
+              <button class="secondary" id="setup-no" type="button">No</button>
+            </div>
+          </div>
         </section>
 
-        <section class="page is-hidden" id="record-page" aria-labelledby="record-heading">
-          <div class="record-head heading-with-action">
-            <div>
-              <h2 id="record-heading">Record Symptoms</h2>
-              <p id="today-summary"></p>
+        <section class="page flow-page is-hidden" id="ab-choice-page">
+          <div class="theme-row"><span>Light/Dark</span><label class="switch"><input data-theme-toggle type="checkbox" /><span></span></label></div>
+          <div class="soft-section center-section">
+            <p class="big-question">Will you be performing an A/B test?</p>
+            <p class="muted">This labels entries so you can compare two phases later.</p>
+            <div class="choice-row">
+              <button class="primary" id="ab-yes" type="button">Yes</button>
+              <button class="secondary" id="ab-no" type="button">No</button>
             </div>
-            <div class="button-row compact-actions">
-              <button class="help-button" id="record-help" type="button" aria-label="Recording help">?</button>
-              <button class="secondary" id="conditions-link" type="button">Conditions</button>
-            </div>
           </div>
-
-          <div id="ab-counter" class="phase-pill is-hidden"></div>
-
-          <div class="segmented" role="group" aria-label="Input method">
-            <button id="type-mode" class="is-selected" type="button">Type</button>
-            <button id="speech-mode" type="button">Speech</button>
-          </div>
-
-          <div id="speech-panel" class="speech-panel is-hidden">
-            <button class="primary" id="speech-toggle" type="button">Start Listening</button>
-            <p id="speech-status">Speech recognition will be used if this device supports it.</p>
-          </div>
-
-          <label>
-            <span>Symptom entry</span>
-            <textarea id="entry-text" class="large-entry" rows="10" placeholder="Record what you notice, in your own words."></textarea>
-          </label>
-
-          <div class="save-row">
-            <button class="primary" id="save-entry" type="button">Save Entry</button>
-            <button class="secondary" id="new-entry" type="button">New Entry</button>
-            <span id="save-status">Not saved yet</span>
-          </div>
-
-          <label>
-            <span>Condition changes</span>
-            <textarea id="entry-condition-change" rows="4" placeholder="Optional"></textarea>
-          </label>
-          <p class="helper">Anything entered here will be recorded alongside this symptom entry and added to condition history.</p>
         </section>
 
-        <section class="page is-hidden" id="conditions-page" aria-labelledby="conditions-heading">
-          <div class="section-heading">
-            <h2 id="conditions-heading">Update Conditions</h2>
-            <p>Changes saved here become the ongoing baseline for future entries.</p>
-          </div>
-
-          <form id="conditions-form" class="stack">
-            <fieldset>
-              <legend>Medication regimen</legend>
-              <div id="conditions-medications" class="repeat-list"></div>
-              <button class="secondary" id="add-conditions-medication" type="button">Add Medication</button>
-            </fieldset>
-
-            <fieldset>
-              <legend>Physical condition</legend>
-              <div id="conditions-physical-checklist" class="check-grid"></div>
-              <label>
-                <span>Physical condition details</span>
-                <textarea id="conditions-physical-notes" rows="4"></textarea>
-              </label>
-            </fieldset>
-
-            <label>
-              <span>Mental condition</span>
-              <textarea id="conditions-mental-notes" rows="4"></textarea>
-            </label>
-
-            <fieldset>
-              <legend>Stress and context factors</legend>
-              <div id="conditions-stress-checklist" class="grouped-checks"></div>
-            </fieldset>
-
-            <div class="button-row">
-              <button class="secondary" id="conditions-cancel" type="button">Return</button>
-              <button class="primary" type="submit">Save Conditions</button>
+        <section class="page flow-page is-hidden" id="ab-config-page">
+          <div class="theme-row"><span>Light/Dark</span><label class="switch"><input data-theme-toggle type="checkbox" /><span></span></label></div>
+          <div class="soft-section center-section">
+            <h1>A/B test duration</h1>
+            <label class="field"><span>Duration</span><input id="ab-duration" inputmode="numeric" maxlength="3" value="14" /></label>
+            <div class="choice-row">
+              <button class="primary" id="ab-days" type="button">Days</button>
+              <button class="secondary" id="ab-months" type="button">Months</button>
             </div>
-            <p id="conditions-status" class="helper"></p>
-          </form>
+            <button class="primary full-width" id="ab-config-next" type="button">Next</button>
+          </div>
         </section>
 
-        <section class="page is-hidden" id="settings-page" aria-labelledby="settings-heading">
-          <div class="section-heading">
-            <h2 id="settings-heading">Settings</h2>
-            <p>Control appearance, export records, or reset local data.</p>
+        <section class="page flow-page is-hidden" id="condition-choice-page">
+          <div class="theme-row"><span>Light/Dark</span><label class="switch"><input data-theme-toggle type="checkbox" /><span></span></label></div>
+          <div class="soft-section center-section">
+            <p class="big-question">Do you want to enter your current condition?</p>
+            <div class="choice-row">
+              <button class="primary" id="condition-yes" type="button">Yes</button>
+              <button class="secondary" id="condition-no" type="button">No</button>
+            </div>
           </div>
+        </section>
 
-          <div class="stack">
-            <button class="secondary" id="about-button" type="button">About SST</button>
-            <label class="toggle-row">
-              <input id="theme-dark-toggle" type="checkbox" />
-              <span>Dark mode</span>
-            </label>
+        <section class="page flow-page is-hidden" id="condition-entry-page">
+          <div class="theme-row"><span>Light/Dark</span><label class="switch"><input data-theme-toggle type="checkbox" /><span></span></label></div>
+          <div class="soft-section center-section">
+            <h1>Current condition</h1>
+            <div class="slider-block">
+              <label class="slider-row"><span><strong>Physical</strong><output id="setup-physical-output">5</output></span><input id="setup-physical" type="range" min="1" max="10" value="5" /></label>
+              <label class="slider-row"><span><strong>Mental</strong><output id="setup-mental-output">5</output></span><input id="setup-mental" type="range" min="1" max="10" value="5" /></label>
+            </div>
+            <label class="field"><span>Notes (optional)</span><span class="speech-field"><textarea id="setup-condition-notes" rows="4"></textarea><button class="mic-button" data-speech-target="setup-condition-notes" type="button">Mic</button></span></label>
+            <button class="primary full-width" id="condition-entry-next" type="button">Next</button>
+          </div>
+        </section>
 
-            <fieldset>
-              <legend>Custom color profile</legend>
-              <div class="field-row colors">
-                <label><span>Background</span><input data-color-var="--bg" type="color" /></label>
-                <label><span>Surface</span><input data-color-var="--surface" type="color" /></label>
-                <label><span>Text</span><input data-color-var="--text" type="color" /></label>
-                <label><span>Primary</span><input data-color-var="--primary" type="color" /></label>
-                <label><span>Accent</span><input data-color-var="--accent" type="color" /></label>
-                <label><span>Border</span><input data-color-var="--border" type="color" /></label>
-              </div>
-              <div class="field-row">
-                <label>
-                  <span>Profile name</span>
-                  <input id="profile-name" />
-                </label>
-                <label>
-                  <span>Saved profiles</span>
-                  <select id="profile-select">
-                    <option value="">Choose saved profile</option>
-                  </select>
-                </label>
-              </div>
-              <div class="button-row">
-                <button class="secondary" id="save-profile" type="button">Save Profile</button>
-                <button class="secondary" id="delete-profile" type="button">Delete Profile</button>
-              </div>
-            </fieldset>
+        <section class="page flow-page is-hidden" id="name-page">
+          <div class="theme-row"><span>Light/Dark</span><label class="switch"><input data-theme-toggle type="checkbox" /><span></span></label></div>
+          <div class="soft-section center-section">
+            <h1>Create your profile</h1>
+            <p class="muted">We will save this profile and use it when you record.</p>
+            <label class="field"><span>First name</span><span class="speech-field"><input id="first-name" autocomplete="given-name" /><button class="mic-button" data-speech-target="first-name" type="button">Mic</button></span></label>
+            <label class="field"><span>Last name (optional)</span><span class="speech-field"><input id="last-name" autocomplete="family-name" /><button class="mic-button" data-speech-target="last-name" type="button">Mic</button></span></label>
+            <button class="primary full-width" id="save-profile-start" type="button">Start Recording</button>
+          </div>
+        </section>
 
-            <fieldset>
-              <legend>A/B phase</legend>
-              <div id="settings-ab-panel"></div>
-              <p id="settings-ab-status" class="helper"></p>
-            </fieldset>
+        <section class="page is-hidden" id="record-page">
+          <header class="record-header">
+            <div class="profile-lockup"><img src="assets/splash-logo.svg" alt="" aria-hidden="true" /><div><strong id="record-profile-name">Profile</strong><button class="secondary small-button" id="switch-profile" type="button">Switch</button></div></div>
+            <button class="icon-button" id="settings-button" type="button" aria-label="Settings">Gear</button>
+          </header>
+          <div id="ab-status" class="phase-pill is-hidden"></div>
+          <div class="segmented" role="group" aria-label="Input method"><button id="type-mode" class="is-selected" type="button">Text</button><button id="speech-mode" type="button">Speech</button></div>
+          <label class="field"><span>Entry</span><textarea id="entry-text" class="main-entry" rows="8" placeholder="Type or transcribed speech appears here."></textarea></label>
+          <p id="save-status" class="save-note">Not saved yet</p>
+          <section class="soft-section">
+            <div class="heading-row"><h1>How do you feel?</h1><button class="help-button" id="record-help" type="button" aria-label="Recording help">?</button></div>
+            <div class="slider-block">
+              <label class="slider-row"><span><strong>Physical</strong><output id="record-physical-output">5</output></span><input id="record-physical" type="range" min="1" max="10" value="5" /></label>
+              <label class="slider-row"><span><strong>Mental</strong><output id="record-mental-output">5</output></span><input id="record-mental" type="range" min="1" max="10" value="5" /></label>
+            </div>
+            <button class="primary full-width" id="save-entry" type="button">Save</button>
+          </section>
+          <button class="secondary full-width" id="done-button" type="button">Done</button>
+        </section>
 
-            <fieldset>
-              <legend>Data</legend>
-              <div class="button-row">
-                <button class="secondary" id="export-csv" type="button">Export CSV</button>
-                <button class="danger" id="reset-records" type="button">Reset Records</button>
-                <button class="danger" id="reset-all" type="button">Reset Everything</button>
-              </div>
-              <p class="helper">All data is stored locally on this device unless you export it.</p>
-            </fieldset>
+        <section class="page flow-page is-hidden" id="thanks-page"><div class="soft-section center-section thank-you"><h1>Thank you</h1><p>the next time you open this app you may record again, as often or as little as necessary. Take care of yourself.</p></div></section>
 
-            <button class="primary bottom-action" id="return-recording" type="button">Return to Recording</button>
+        <section class="page is-hidden" id="settings-page">
+          <header class="settings-header"><h1>Settings</h1><button class="icon-button" id="settings-close" type="button" aria-label="Close">X</button></header>
+          <div class="settings-stack">
+            <section class="soft-section"><h2>Profile</h2><label class="field"><span>Current user</span><select id="profile-select"></select></label><div class="choice-row"><button class="secondary" id="add-user" type="button">Add User</button><button class="secondary" id="switch-user-settings" type="button">Switch</button></div></section>
+            <section class="soft-section"><h2>Appearance</h2><label class="toggle-row"><input id="theme-dark-toggle" type="checkbox" /><span>Dark mode</span></label><div class="color-grid"><label class="field"><span>Background</span><input data-color-var="--bg" type="color" /></label><label class="field"><span>Surface</span><input data-color-var="--surface" type="color" /></label><label class="field"><span>Text</span><input data-color-var="--text" type="color" /></label><label class="field"><span>Primary</span><input data-color-var="--primary" type="color" /></label><label class="field"><span>Border</span><input data-color-var="--border" type="color" /></label></div><label class="field"><span>Profile name</span><input id="color-profile-name" /></label><label class="field"><span>Saved color profiles</span><select id="color-profile-select"><option value="">Choose saved profile</option></select></label><div class="choice-row"><button class="secondary" id="save-color-profile" type="button">Save Colors</button><button class="secondary" id="delete-color-profile" type="button">Delete Colors</button></div></section>
+            <section class="soft-section"><h2>A/B Test</h2><label class="toggle-row"><input id="settings-ab-enabled" type="checkbox" /><span>Enable A/B tracking</span></label><label class="field"><span>Duration</span><input id="settings-ab-duration" inputmode="numeric" maxlength="3" /></label><div class="choice-row"><button class="secondary" id="settings-ab-days" type="button">Days</button><button class="secondary" id="settings-ab-months" type="button">Months</button></div><button class="primary full-width" id="save-ab-settings" type="button">Save A/B Settings</button></section>
+            <section class="soft-section"><h2>Data</h2><div class="settings-grid"><button class="secondary" id="export-csv" type="button">Export CSV</button><button class="danger" id="reset-records" type="button">Reset Records</button><button class="danger" id="reset-all" type="button">Reset Everything</button></div><p class="muted">All data is stored locally on this device unless you export it.</p></section>
+            <button class="secondary full-width" id="about-button" type="button">About SST</button>
           </div>
         </section>
       </main>
     </div>
 
-    <div class="modal-backdrop is-hidden" id="modal-backdrop" role="presentation">
-      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-head">
-          <h2 id="modal-title"></h2>
-          <button class="icon-button" id="modal-close" type="button" aria-label="Close">X</button>
-        </div>
-        <div id="modal-body" class="modal-body"></div>
-      </section>
-    </div>
-
+    <div class="modal-backdrop is-hidden" id="modal-backdrop" role="presentation"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><h1 id="modal-title"></h1><button class="icon-button" id="modal-close" type="button" aria-label="Close">X</button></div><div id="modal-body" class="modal-body"></div></section></div>
     <script src="app.js" defer></script>
   </body>
 </html>
-
-
-
-
-
 
