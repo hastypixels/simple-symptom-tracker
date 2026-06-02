@@ -1,4 +1,4 @@
-const CACHE_NAME = "symptom-tracker-v4";
+const CACHE_NAME = "symptom-tracker-v5";
 
 const APP_SHELL = [
   "./",
@@ -34,6 +34,7 @@ self.addEventListener("fetch", (event) => {
     caches.match(event.request).then((cached) => cached || fetch(event.request))
   );
 });
+
 
 
 

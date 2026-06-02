@@ -1,7 +1,7 @@
 const STORAGE_KEY = "simpleSymptomTracker.v2";
-const APP_VERSION = "0.4.0";
-const APP_BUILD = "20260602.004";
-const APP_BUILD_DATE = "2026-06-02 05:21 -07:00";
+const APP_VERSION = "0.4.1";
+const APP_BUILD = "20260602.005";
+const APP_BUILD_DATE = "2026-06-02 05:35 -07:00";
 
 let state = loadState();
 let wizard = {};
@@ -409,5 +409,6 @@ function createId() { return crypto.randomUUID ? crypto.randomUUID() : `${Date.n
 function todayISO(date = new Date()) { const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000); return local.toISOString().slice(0, 10); }
 function csvCell(value) { const text = String(value ?? ""); return /[",\r\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text; }
 function escapeHtml(value) { return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]); }
+
 
 

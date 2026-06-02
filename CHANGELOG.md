@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1 - Build 20260602.005 - 2026-06-02 05:35 -07:00
+
+- Replaced the Settings text button on the recording page with a gear icon.
+- Capitalized the first word of the thank-you message sentence.
 ## 0.4.0 - Build 20260602.004 - 2026-06-02 05:21 -07:00
 
 - Rebuilt the app around a simplified, perception-first recording flow.
@@ -30,5 +34,6 @@
 ## 0.1.0 - Build 20260525.001 - 2026-05-25
 
 - Created the first offline PWA build with setup, recording, conditions, settings, local storage, CSV export, splash screen, app icons, and service worker caching.
+
 
 
